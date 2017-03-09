@@ -46,12 +46,19 @@ public class Main {
         );
 
 
-        //
+        // Predicate remove a product more expensive $5
+        Predicate<Product> moreExpensive = (Product product) ->
+                product.price > 5f;
+        groceryStore.removeIf(moreExpensive);
+        System.out.println("\n\nWithout more expensive & Meat : List");
+        groceryStore.forEach(
+                product -> System.out.println(product)
+        );
     }
 
 
 
-static class Product {
+ static class Product {
         public int id;
         public String name,categoria;
         public float price;
