@@ -1,8 +1,11 @@
 import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 /**
@@ -54,6 +57,25 @@ public class Main {
         groceryStore.forEach(
                 product -> System.out.println(product)
         );
+
+        // Just Filter first Fruit without eliminating the other products
+        System.out.println("\n\nJust Filter Fruit");
+        System.out.println(groceryStore.stream()
+                .filter( (Product product) -> product.categoria.equals("Fruit")
+                ).findFirst()
+        );
+
+        // Filter all Fruits
+        System.out.println("Filter All fruits");
+        System.out.println(
+                groceryStore.stream().filter(
+                        (Product product) -> product.categoria.equals("Fruit")
+                ).collect(Collectors.toList())
+        );
+
+        // Print each of the products
+        System.out.println("\nDon't eliminate the other products just filter:");
+        groceryStore.forEach(product -> System.out.println(product));
     }
 
 
